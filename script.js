@@ -1,242 +1,230 @@
-// // // // JavaScript Fundamentals - Part 1
-// // // // We'll write our code here!
+////////////////////////////////////
+// Type Conversion and Coercion
 
-// // // let js = "amazing";
-// // // console.log(40 + 8 + 23 - 10);
+// type conversion (manual)
+const inputYear = "1991";
+console.log(Number(inputYear), inputYear); // 1991, "1991"
+console.log(Number(inputYear) + 18); // 2009
 
+console.log(Number("Jonas")); // NaN (Not a Number)
+console.log(typeof NaN); // "number" (weird but true!)
 
-// // // console.log("=== VARIABLES ===");
-// // // let firstName = "Charles";
-// // // console.log(firstName);
+console.log(String(23), 23); // "23", 23
+console.log(typeof String(23)); // "string"
 
-// // // let age = 30
-// // // console.log(age);
-// // // age = 30;
-// // // console.log(age);
+// type coercion (automatic)
+console.log("I am " + 23 + " years old"); // "I am 23 years old"
+console.log("23" - "10" - 3); // 10 (strings become numbers)
+console.log("23" / "2"); // 11.5 (division converts to numbers)
+console.log("23" * "2"); // 46 (multiplication converts to numbers)
 
-// // // const birthYear = 1991;
-// // // console.log(birthYear);
+// Can you guess what these will output?
+let n = "1" + 1; // What do you think?
+n = n - 1; // What about now?
+console.log(n);
 
-// // // const PI = 3.1415;
-// // // console.log(PI); 3.1415
-
-
-
-// // // var job = "programmer";
-
-// // // let lastName = "Sarah";
-// // // let myCurrentJob = "teacher";
-
+console.log(2 + 3 + 4 + "5"); // Try to guess!
+console.log("10" - "4" - "3" - 2 + "5"); // This one's tricky!
 
 
+// Predict the output, then test:
+console.log("5" + 2); // Your guess: ?
+console.log("5" - 2); // Your guess: ?
+console.log("5" * 2); // Your guess: ?
+console.log("5" / 2); // Your guess: ?
+
+// Convert these explicitly:
+const userAge = "25"; // Convert to number
+const userScore = 95; // Convert to string
+// Your code here...
 
 
-// // // //let 3years
-// // // //let jonas&matilda
-// // // //let new
+// This calculator has a bug - fix it!
+const num1 = prompt("First number:"); // Returns string!
+const num2 = prompt("Second number:"); // Returns string!
 
-// // // const country = "portugal";
-// // // const language = "Portuguese"
-// // // const population = 10
+// Convert the input strings to numbers
+const num1Converted = parseFloat(num1);
+const num2Converted = parseFloat(num2);
 
-// // // let ageNow = 25;
-// // // ageNow = 26;
+// Check if the conversion is successful
+if (isNaN(num1Converted) || isNaN(num2Converted)) {
+    console.log("Please enter valid numbers. Refresh the page and try again.");
+} else {
+    const sum = num1Converted + num2Converted;
+    console.log(`Sum: ${sum}`);
+}
 
-// // // console.log("=== DATA TYPES ===");
+////////////////////////////////////
+// Equality Operators: == vs. ===
 
-// // // let weight = 45;
-// // // console.log(weight); 45
-// // // console.log(typeof age); 'number'
+const age = "18";
+if (age === 18) console.log("You just became an adult :D (strict)");
+if (age == 18) console.log("You just became an adult :D (loose)");
 
-// // // let username = "Max";
-// // // console.log(username); 'Max'
-// // // console.log(typeof username); 'string'
+// Let's see what happens:
+console.log("18" === 18); // false - different types
+console.log("18" == 18); // true - coercion happens
+console.log(18 === 18); // true - same type and value
 
+// Why == can be dangerous
+console.log("0" == 0); // true (string converted)
+console.log(0 == false); // true (boolean converted)
+console.log("0" == false); // true (both converted!)
+console.log(null == undefined); // true (special case)
 
-// // // let javascriptisFun = true;
-// // // console.log(javascriptisFun); true
-// // // console.log(typeof javascriptisFun); 'boolean'
+// Weird cases that cause bugs
+console.log("" == 0); // true
+console.log("   " == 0); // true (spaces trimmed!)
 
-// // // let year;
-// // // console.log(year); undefined
-// // // console.log(typeof year); 'undefined0'
+// Convert explicitly, then compare strictly
+const favourite = Number(prompt("What's your favourite number?"));
+console.log(favourite);
+console.log(typeof favourite);
 
-// // // let dynamicVariable = 23;
-// // // console.log(dynamicVariable, typeof dynamicVariable)
+if (favourite === 23) {
+  console.log("Cool! 23 is an amazing number!");
+} else if (favourite === 7) {
+  console.log("7 is also a cool number");
+} else if (favourite === 9) {
+  console.log("9 is also a cool number");
+} else {
+  console.log("Number is not 23 or 7 or 9");
+}
 
-// // // dynamicVariable = "Now i am a string";
-// // // console.log(dynamicVariable, typeof dynamicVariable)
+// Not-equal operator
+if (favourite !== 23) console.log("Why not 23?");
 
-// // // dynamicVariable = true;
-// // // console.log(dynamicVariable, typeof dynamicVariable)
+// Test these comparisons - predict first, then run:
+console.log(5 === "5"); // Your guess: ?
+console.log(5 == "5"); // Your guess: ?
+console.log(true === 1); // Your guess: ?
+console.log(true == 1); // Your guess: ?
+console.log(false === 0); // Your guess: ?
+console.log(false == 0); // Your guess: ?
 
-// // /////////////////////////////////////////
+// This login system has bugs - fix them!
+const username = prompt("Username:");
+const password = prompt("Password:");
 
-// // // Basic Operators - Math operators
-// // console.log("=== MATH OPERATORS ===");
+// Fix using strict equality
+if (username === "admin" && password === "1234") {
+  console.log("Welcome admin!");
+} else {
+  console.log("Access denied");
+}
 
-// // const now = 2037;
-// // const ageJonas = now - 1991;
-// // const ageSarah = now - 2018;
-// // console.log(ageJonas, ageSarah);
+////////////////////////////////////
+// Logical Operators
 
-// // console.log(ageJonas * 2, ageJonas / 10, 2 ** 3);
+const hasDriversLicense = true; // A
+const hasGoodVision = true; // B
 
-// // console.log("Math operation:");
-// // console.log("Addition:", 10 + 5);
-// // console.log("Subtraction:", 20-8);
-// // console.log("Multiplication:", 4 * 7);
-// // console.log("Division:", 15 / 3);
-// // console.log("Exponentiation:", 2 ** 3);
+console.log(hasDriversLicense && hasGoodVision); // AND: both must be true
+console.log(hasDriversLicense || hasGoodVision); // OR: one must be true
+console.log(!hasDriversLicense); // NOT: inverts the value
 
-// // const firstName = "Jonas";
-// // const lastName = "Doe";
-// // console.log(firstName + '' + lastName);
+const isTired = false; // C
+console.log(hasDriversLicense && hasGoodVision && !isTired);
 
-// // console.log("hello" + "World" +"!" );
-// // console.log("I am" + 25 + "years old");
+if (hasDriversLicense && hasGoodVision && !isTired) {
+  console.log("Sarah is able to drive!");
+} else {
+  console.log("Someone else should drive...");
+}
 
-// // console.log("=== ASSIGNMENT OPERATORS ===");
+// More complex scenarios
+const age = 20;
+const hasPermission = true;
+const hasExperience = false;
 
-// // let x = 10 + 5;
-// // console.log("x starts as:", x);
+// Can drive if: (age >= 18 OR has permission) AND has experience
+if ((age >= 18 || hasPermission) && hasExperience) {
+  console.log("Approved to drive");
+} else {
+  console.log("Not approved to drive");
+}
 
-// // x += 10;
-// // console.log("x starts as:, x");
+// Create a club entry system with these rules:
+// Entry allowed if: (age >= 21 AND hasID) OR isVIP
 
-// // x *= 4;
-// // console.log("x starts as:", x);
+const age = 19; // Try different values
+const hasID = true; // Try different values
+const isVIP = false; // Try different values
 
-// // x /= 2;
-// // console.log("x starts as:", x);
-
-// // x++;
-// // console.log("x starts as:", x);
-
-// // x--;
-// // console.log("x starts as:", x);
-
-// // ////////////////////////////////////
-// // // Comparison operators
-// // console.log("=== COMPARISON OPERATORS ===");
-
-// // console.log("Age comparison:");
-// // console.log(ageJonas > ageSarah); // true (46 > 19)
-// // console.log(ageSarah >= 18); // true (19 >= 18)
-// // console.log(ageJonas < 30); // false (46 < 30)
-
-// // console.log("Number comparisons:");
-// // console.log(25 > 20); // true
-// // console.log(15 < 10); // false
-// // console.log(18 >= 18); // true
-// // console.log(16 <= 15); // false
-
-// // const isFullAge = ageSarah >= 18;
-// // console.log("Sarah is adult:", isFullAge); // true
-
-// // const isJonasOlder = ageJonas > ageSarah;
-// // console.log("Jonas is older:", isJonasOlder); // true
-
-// // Operator Precedence
-
-// // const now = 2037;
-// // const ageJonas = now - 1991;
-// // const ageSarah = now - 2018;
-
-// // console.log(now - 1991 > now -2018);
-
-// // let x, y;
-// // x = y = 25 - 10 - 5; 
-// // console.log(x, y);
-
-// // const averageAge = (ageJonas + ageSarah) / 2;
-// // console.log(ageJonas, ageSarah, averageAge);
-
-// // ////////////////////////////////////
-// // // Coding Challenge #1 - BMI Calculator
-
-// // // Test Data 1
-// // const massMark = 78;
-// // const heightMark = 1.69;
-// // const massJohn = 92;
-// // const heightJohn = 1.95;
-
-// // MarkBMI = massMark / heightMark ** 2;
-// // JohnBMI = massJohn / heightJohn ** 2;
-
-// // const markHigherBMI = MarkBMI >= JohnBMI
-// // console.log(MarkBMI);
-// // console.log(JohnBMI);
-// // console.log("does mark have a higher BMI then John:", markHigherBMI);
-
-// ////////////////////////////////////
-// // Strings and Template Literals
-// const firstName = "Jonas";
-// const job = "teacher";
-// const birthYear = 1991;
-// const year = 2037;
-
-// const jonas =
-//   "I'm " + firstName + ", a " + (year - birthYear) + " year old " + job + "!";
-// console.log(jonas);
-
-// const jonasNew = `I'm ${firstName}, a ${year - birthYear} year old ${job}!`;
-// console.log(jonasNew);
-
-// // Any expression works inside ${}
-// console.log(`I'm ${2037 - 1991} years old`);
-// console.log(`Math works: ${2 + 3} equals five`);
-// console.log(`Comparisons too: ${5 > 3}`); // true
-
-// // You can use backticks for any string
-// console.log(`Just a regular string...`);
-
-// ////////////////////////////////////
-// // Taking Decisions: if / else Statements
-// const age = 15;
-
-// if (age >= 18) {
-//   console.log("Sarah can start driving license 🚗");
+// Your logic here:
+// if (...) {
+//   console.log('Welcome to the club!');
 // } else {
-//   const yearsLeft = 18 - age;
-//   console.log(`Sarah is too young. Wait another ${yearsLeft} years :)`);
+//   console.log('Sorry, you cannot enter');
 // }
 
-// ////////////////////////////////////
-// // Truthy and Falsy Values
+// Create a weather advisor:
+const temperature = 25; // Celsius
+const isRaining = false;
+const isWindy = true;
 
-// // 5 falsy values: 0, '', undefined, null, NaN
-// console.log(Boolean(0)); // false
-// console.log(Boolean(undefined)); // false
-// console.log(Boolean("Jonas")); // true
-// console.log(Boolean({})); // true (empty object)
-// console.log(Boolean("")); // false (empty string)
+// Advice rules:
+// Perfect day: temp 20-30 AND not raining AND not windy
+// Good day: temp 15-35 AND not raining
+// Stay inside: anything else
 
-// const money = 100;
-// if (money) {
-//   console.log("Don't spend it all ;)");
-// } else {
-//   console.log("You should get a job!");
-// }
+// Your code here...
 
-// ////////////////////////////////////
-// // Coding Challenge #2
+// Perfect for template literals!
+console.log(`I like to drink ${age >= 18 ? "wine 🍷" : "water 💧"}`);
 
-// // Reuse your BMI calculation from Challenge #1
-// const massMark = 78;
-// const heightMark = 1.69;
-// const massJohn = 92;
-// const heightJohn = 1.95;
- 
-// const BMIMark = massMark / heightMark ** 2;
-// const BMIJohn = massJohn / (heightJohn * heightJohn);
-// console.log(BMIMark, BMIJohn);
- 
-// if (BMIMark > BMIJohn) {
-//     console.log(`Mark's BMI is higher than John's!`);
-// } else {
-//     console.log(`John's BMI is higher than Mark's!`);
-// }
-// if (true) {
-// console.log(`Mark's BMI ${BMIMark} is higher than John's ${BMIJohn}!`);
-// }
+// You cannot use if/else inside template literals!
+// This would NOT work:
+// console.log(`I like to drink ${if (age >= 18) 'wine' else 'water'}`);
+
+
+const status = score >= 60 ? "passed" : "failed";
+const message = isLoggedIn ? "Welcome back!" : "Please log in";
+const discount = isPremium ? 0.2 : 0.1;
+
+
+if (score >= 90) {
+  console.log("Excellent!");
+  grade = "A";
+  bonus = true;
+} else if (score >= 80) {
+  console.log("Good job!");
+  grade = "B";
+} // ... etc
+
+// Convert these if/else to ternary operators:
+
+// 1. Login status
+const isLoggedIn = true;
+let welcomeMessage;
+if (isLoggedIn) {
+  welcomeMessage = "Welcome back!";
+} else {
+  welcomeMessage = "Please sign in";
+}
+// Ternary version: ?
+
+// 2. Price with discount
+const isPremium = false;
+let price;
+if (isPremium) {
+  price = 100 * 0.8; // 20% discount
+} else {
+  price = 100;
+}
+// Ternary version: ?
+
+// Create smart responses using ternary in template literals:
+const score = 85;
+const weather = "sunny";
+const battery = 15; // percentage
+
+const bill = 275; // Test with 275, 40, and 430
+
+// Step 1: Create the tip calculation using ternary operator
+// Rule: 15% if between 50-300, otherwise 20%
+const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+
+// Step 2: Create beautiful output with template literal
+console.log(`The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}`);
